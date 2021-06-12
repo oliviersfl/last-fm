@@ -6,6 +6,7 @@ import Favourites from './Favourites';
 import Content from '../Constants';
 
 function App() {
+    // Initialize state and set default page
     const [currentPage, setCurrentPage] = useState(Content.LastFm);
 
     return (

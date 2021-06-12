@@ -11,7 +11,7 @@ function LastFm({ visible }) {
   //   }
   // });
   return (
-    <div className="ui segment">
+    <div className={ "ui segment content" + (visible ? "" : " hidden") }>
       <LastFmSearch />
     </div>
   );
