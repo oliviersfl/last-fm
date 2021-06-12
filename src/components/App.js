@@ -5,10 +5,9 @@ import MusicBrainz from './MusicBrainz';
 import Favourites from './Favourites';
 import Content from '../Constants';
 
-function App() {
+const App = () => {
     // Initialize state and set default page
     const [currentPage, setCurrentPage] = useState(Content.LastFm);
-
     return (
         <div className="ui container">
             <Menu
