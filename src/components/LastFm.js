@@ -12,14 +12,6 @@ function searchArtist(term) {
 }
 
 function LastFm({ visible }) {
-  // Examples
-
-  // Search for Artist
-  // LastFmApi.get("", {
-  //   params: {
-  //     artist: "<Artist Name>"
-  //   }
-  // });
   return (
     <div className={ "ui segment content" + (visible ? "" : " hidden") }>
       <LastFmSearch onFormSubmit={ searchArtist } />
