@@ -1,8 +1,5 @@
-import React from "react";
-import LastFmApi from "../api/lastfm";
-
-import 'semantic-ui-css/semantic.min.css'
-
+import LastFmApi from '../api/lastfm';
+import LastFmSearch from './Search/LastFmSearch';
 
 function LastFm() {
   // Examples
@@ -15,7 +12,8 @@ function LastFm() {
   // });
 
   return (
-    <div className="App">
+    <div className="ui segment">
+      <LastFmSearch />
     </div>
   );
 }

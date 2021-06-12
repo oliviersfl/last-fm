@@ -1,4 +1,5 @@
 import MusicBrainzApi from '../api/musicbrainz';
+import MusicBrainzSearch from './Search/MusicBrainzSearch';
 
 function MusicBrainz() {
     //Examples
@@ -18,7 +19,9 @@ function MusicBrainz() {
     // });
 
     return (
-        <div className="App"></div>
+        <div className="ui segment">
+          <MusicBrainzSearch />
+        </div>
       );
 }
 
