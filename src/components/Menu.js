@@ -21,7 +21,7 @@ function Menu({ navigation, setCurrentPage }) {
                     onClick={ () => setCurrentPage(Content.Favourites) }
 
                 >
-                    Favourites
+                    ⭐ Favourites
                 </a>
             </div>
         </div>
