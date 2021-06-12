@@ -11,7 +11,7 @@ function searchArtist(term) {
   });
 }
 
-function LastFm({ visible }) {
+const LastFm = ({ visible }) => {
   return (
     <div className={ "ui segment content" + (visible ? "" : " hidden") }>
       <LastFmSearch onFormSubmit={ searchArtist } />
