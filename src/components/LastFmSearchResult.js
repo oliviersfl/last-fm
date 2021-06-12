@@ -11,12 +11,12 @@ const LastFmSearchResult = ( {artists }) => {
                 </thead>
                 <tbody>
                     {
-                        artists == null ? "" : artists.map((artist) => {
+                        artists && artists.map((artist) => {
                             return (
-                                <tr>
+                                <tr key={ artist.name }>
                                     <td>
                                         <div className="ui image">
-                                            <img src={ artist.image[1]["#text"] } />
+                                            <img src={ artist.image[0]["#text"] } alt="artistImage" />
                                         </div>
                                     </td>
                                     <td>{ artist.name }</td>
