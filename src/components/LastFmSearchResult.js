@@ -16,7 +16,7 @@ const LastFmSearchResult = ( {artists }) => {
                                 <tr key={ artist.name }>
                                     <td>
                                         <div className="ui image">
-                                            <img src={ artist.image[0]["#text"] } alt="artistImage" />
+                                            <img src={ artist.image[0]["#text"] } alt="artist" />
                                         </div>
                                     </td>
                                     <td>{ artist.name }</td>
