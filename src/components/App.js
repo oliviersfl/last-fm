@@ -1,15 +1,22 @@
+import React, { useState } from 'react';
 import Menu from './Menu';
 import LastFm from './LastFm';
 import MusicBrainz from './MusicBrainz';
 import Favourites from './Favourites';
+import Content from '../Constants';
 
 function App() {
+    const [currentPage, setCurrentPage] = useState(Content.LastFm);
+
     return (
         <div className="ui container">
-            <Menu />
-            <LastFm />
-            <MusicBrainz />
-            <Favourites />
+            <Menu
+                navigation={ currentPage }
+                setCurrentPage={ setCurrentPage }
+            />
+            <LastFm visible={ currentPage === Content.LastFm } />
+            <MusicBrainz visible={ currentPage === Content.MusicBrainz } />
+            <Favourites visible={ currentPage === Content.Favourites } />
         </div>
     );
 }

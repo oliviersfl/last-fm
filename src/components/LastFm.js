@@ -1,7 +1,7 @@
 import LastFmApi from '../api/lastfm';
 import LastFmSearch from './Search/LastFmSearch';
 
-function LastFm() {
+function LastFm({ visible }) {
   // Examples
 
   // Search for Artist
@@ -10,7 +10,6 @@ function LastFm() {
   //     artist: "<Artist Name>"
   //   }
   // });
-
   return (
     <div className="ui segment">
       <LastFmSearch />

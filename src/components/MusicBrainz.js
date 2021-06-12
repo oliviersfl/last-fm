@@ -1,7 +1,7 @@
 import MusicBrainzApi from '../api/musicbrainz';
 import MusicBrainzSearch from './Search/MusicBrainzSearch';
 
-function MusicBrainz() {
+function MusicBrainz({ visible }) {
     //Examples
 
     // Search for Artists
@@ -17,7 +17,6 @@ function MusicBrainz() {
     //         query: "arid:<Artist ID>"
     //     }
     // });
-
     return (
         <div className="ui segment">
           <MusicBrainzSearch />
