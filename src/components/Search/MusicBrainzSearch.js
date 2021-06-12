@@ -1,12 +1,27 @@
-function MusicBrainzSearch() {
+import React, { useState } from 'react';
+
+const MusicBrainzSearch = ({ onFormSubmit, onShowRelease }) => {
+    const [term, setTerm] = useState('');
+
+    const submitForm = event => {
+        event.preventDefault();
+        onFormSubmit(term);
+    }
+
     return (
-        <div>
-            <h1>Search MusicBrainz</h1>
-            <div className="ui icon input">
-                <input type="text" placeholder="Search for Artist..." />
-                <i className="search icon"></i>
+        <form onSubmit={ submitForm } className="ui form">
+            <div className="field">
+                <h1>Search MusicBrainz</h1>
+                <div className="ui icon input">
+                    <input
+                        type="text"
+                        value={ term }
+                        onChange={ e => setTerm(e.target.value) }
+                        placeholder="Search for Artist..." />
+                    <i className="search icon"></i>
+                </div>
             </div>
-        </div>
+        </form>
     );
 }
 
