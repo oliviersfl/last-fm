@@ -21,7 +21,7 @@ const MusicBrainzSearchResult = ({ artists }) => {
                                     <tr>
                                         <td className="twelve wide">{ artist.name }</td>
                                         <td className="four wide center aligned">
-                                            <button className="ui green basic button" onClick={ () => setActiveArtistRelease(artist.id === activeArtistRelease ? null : artist.id) }>Show Releases</button>
+                                            <button className="ui green basic button" onClick={ () => setActiveArtistRelease(artist.id === activeArtistRelease ? null : artist.id) }>{ artist.id === activeArtistRelease ? "Hide" : "Show" } Releases</button>
                                         </td>
                                     </tr>
                                     <tr className={ artist.id === activeArtistRelease ? "" : "hidden"}>
