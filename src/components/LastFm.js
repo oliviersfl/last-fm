@@ -6,6 +6,7 @@ import { Button, Modal } from 'semantic-ui-react'
 
 const LastFm = ({ visible }) => {
   const [searchResults, setSearchResults] = useState(null);
+  const [shortList, setShortList] = useState([]);
   const [open, setOpen] = React.useState(false)
 
   const searchArtist = (term) => {
@@ -32,7 +33,7 @@ const LastFm = ({ visible }) => {
               onClose={ () => setOpen(false) }
               onOpen={ () => setOpen(true) }
               open={ open }
-              trigger={<Button className="ui button center aligned green">Show short-list</Button>}
+              trigger={<Button className="ui button center aligned green">Show short-list ({ shortList.length })</Button>}
             >
               <Modal.Header>Your Shortlist</Modal.Header>
               <Modal.Content>
@@ -44,10 +45,16 @@ const LastFm = ({ visible }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td><i className="star outline icon orange pointer"></i></td>
-                      <td className="left aligned">Artist name</td>
-                    </tr>
+                    {
+                      shortList.map(artist => {
+                        return (
+                          <tr>
+                            <td><i className="star outline icon orange pointer"></i></td>
+                            <td className="left aligned">{ artist }</td>
+                          </tr>
+                        );
+                      })
+                    }
                   </tbody>
                 </table>
               </Modal.Content>
@@ -57,7 +64,11 @@ const LastFm = ({ visible }) => {
         </tbody>
       </table>
       <LastFmSearch onFormSubmit={ searchArtist } />
-      <LastFmSearchResult artists={ (searchResults != null && searchResults.results) && searchResults.results.artistmatches.artist } />
+      <LastFmSearchResult
+        artists={ (searchResults != null && searchResults.results) && searchResults.results.artistmatches.artist }
+        shortList={ shortList }
+        setShortList={ setShortList }
+      />
       
     </div>
   );

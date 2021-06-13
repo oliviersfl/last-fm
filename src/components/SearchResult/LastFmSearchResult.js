@@ -1,4 +1,13 @@
-const LastFmSearchResult = ( {artists }) => {
+const LastFmSearchResult = ( {artists, shortList, setShortList }) => {
+    const addToShortList = (artistName) => {
+        // Do not add if already in shortlist
+        if(shortList.includes(artistName)) {
+            return;
+        }
+        shortList.push(artistName);
+        // Update state to update count of short list
+        setShortList(Array.from(shortList));
+    }
     return (
         <div className={ "ui segment content" + (!artists ? " hidden" : "") }>
             <table className="ui selectable celled table">
@@ -21,7 +30,11 @@ const LastFmSearchResult = ( {artists }) => {
                                     </td>
                                     <td>{ artist.name }</td>
                                     <td className="center aligned">
-                                        <i className="plus circle icon big green" title={ "Add " + artist.name + " to shortlist" }></i>
+                                        <i
+                                            className={ "plus circle icon big pointer green" }
+                                            title={ "Add " + artist.name + " to shortlist" }
+                                            onClick={ () => addToShortList(artist.name) }
+                                        ></i>
                                     </td>
                                 </tr>
                             )
