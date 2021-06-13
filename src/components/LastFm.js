@@ -48,7 +48,7 @@ const LastFm = ({ visible }) => {
                     {
                       shortList.map(artist => {
                         return (
-                          <tr>
+                          <tr key={ artist }>
                             <td><i className="star outline icon orange pointer"></i></td>
                             <td className="left aligned">{ artist }</td>
                           </tr>
