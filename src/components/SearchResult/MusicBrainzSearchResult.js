@@ -1,21 +1,35 @@
+import React, { useState } from 'react';
+import MusicBrainzRelease from "./MusicBrainzRelease";
+
 const MusicBrainzSearchResult = ({ artists }) => {
+    const [activeArtistRelease, setActiveArtistRelease] = useState(null);
+
     return (
-        <div className={ "ui segment content" + (!artists && " hidden") }>
-            <table className="ui selectable celled table">
+        <div className={ "ui segment content" + (!artists ? " hidden" : "") }>
+            <table className="ui basic celled table">
                 <thead>
                     <tr>
-                        <th>Artist Name</th>
-                        <th></th>
+                        <th className="thirteen wide">Artist Name</th>
+                        <th className="three wide"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="">
                     {
                         artists && artists.map((artist) => {
                             return (
-                                <tr key={ artist.name }>
-                                    <td className="twelve wide">{ artist.name }</td>
-                                    <td className="four wide">Show Releases</td>
-                                </tr>
+                                <React.Fragment key={ artist.id }>
+                                    <tr>
+                                        <td className="twelve wide">{ artist.name }</td>
+                                        <td className="four wide center aligned">
+                                            <button className="ui green basic button" onClick={ () => setActiveArtistRelease(artist.id === activeArtistRelease ? null : artist.id) }>Show Releases</button>
+                                        </td>
+                                    </tr>
+                                    <tr className={ artist.id === activeArtistRelease ? "" : "hidden"}>
+                                        <td colSpan="2">
+                                            <MusicBrainzRelease artistId={ artist.id } visible="false" />
+                                        </td>
+                                    </tr>
+                                </React.Fragment>
                             );
                         })
                     }

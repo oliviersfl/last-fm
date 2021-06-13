@@ -19,7 +19,7 @@ const LastFm = ({ visible }) => {
   }
 
   return (
-    <div className={ "ui segment content" + (!visible && " hidden") }>
+    <div className={ "ui segment content" + (!visible ? " hidden" : "") }>
       <LastFmSearch onFormSubmit={ searchArtist } />
       <LastFmSearchResult artists={ (searchResults != null && searchResults.results) && searchResults.results.artistmatches.artist }/>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const MusicBrainzSearch = ({ onFormSubmit, onShowRelease }) => {
+const MusicBrainzSearch = ({ onFormSubmit }) => {
     const [term, setTerm] = useState('');
 
     const submitForm = event => {

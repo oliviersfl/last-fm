@@ -18,22 +18,12 @@ const MusicBrainz = ({ visible }) => {
     });
   }
 
-  const searchRelease = (artistId) => {
-    MusicBrainzApi.get("/release", {
-      params: {
-          query: artistId
-      }
-    }).then((response) => {
-      
-    }, (error) => {
-      
-    });
-  }
-
   return (
-    <div className={ "ui segment content" + (!visible && " hidden") }>
-      <MusicBrainzSearch onFormSubmit={ searchArtist } onShowRelease={ searchRelease }/>
-      <MusicBrainzSearchResult artists={ (searchResults != null && searchResults.artists) && searchResults.artists } />
+    <div className={ "ui segment content" + (!visible ? " hidden" : "") }>
+      <MusicBrainzSearch onFormSubmit={ searchArtist }/>
+      <MusicBrainzSearchResult
+        artists={ (searchResults != null && searchResults.artists) && searchResults.artists }
+      />
     </div>
   );
 }
