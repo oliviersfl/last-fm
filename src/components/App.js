@@ -10,8 +10,8 @@ const App = () => {
     Session.config(true, 0);
     
     // Initialize session to empty array if not set
-    if(Session.get("lastfmFav") == null) {
-        Session.set("lastfmFav", JSON.stringify([]));
+    if(Session.get("favArtists") == null) {
+        Session.set("favArtists", JSON.stringify([]));
     }
 
     // Initialize state and set default page

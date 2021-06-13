@@ -12,25 +12,25 @@ const LastFm = ({ visible }) => {
   const [favourites, setFavourites] = React.useState([]);
 
   useEffect(() => {
-    var favArtists = JSON.parse(Session.get("lastfmFav"));
+    var favArtists = JSON.parse(Session.get("favArtists"));
     setFavourites(favArtists);
   }, [open]);
 
-  const addToFavourites = (artistName) => {
+  const updateFavourites = (artistName) => {
 
-    var favArtists = JSON.parse(Session.get("lastfmFav"));
+    var favArtists = JSON.parse(Session.get("favArtists"));
 
     // Add to favourites
     if(!favArtists.includes(artistName)) {
       favArtists.push(artistName);
-      Session.set("lastfmFav", JSON.stringify(favArtists));
+      Session.set("favArtists", JSON.stringify(favArtists));
     }
 
     // Remove from favourites (if artist already in session)
     else {
       var index = favArtists.indexOf(artistName);
       favArtists.splice(index, 1);
-      Session.set("lastfmFav", JSON.stringify(favArtists));
+      Session.set("favArtists", JSON.stringify(favArtists));
     }
     
     setFavourites(favArtists);
@@ -76,7 +76,7 @@ const LastFm = ({ visible }) => {
                       shortList.map(artist => {
                         return (
                           <tr key={ artist }>
-                            <td><i className={ "star icon orange pointer" + (favourites.includes(artist) ? "" : " outline") } onClick={ () => addToFavourites(artist) }></i></td>
+                            <td><i className={ "star icon orange pointer" + (favourites.includes(artist) ? "" : " outline") } onClick={ () => updateFavourites(artist) }></i></td>
                             <td className="left aligned">{ artist }</td>
                           </tr>
                         );
