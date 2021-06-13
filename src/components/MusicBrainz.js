@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MusicBrainzApi from '../api/musicbrainz';
 import MusicBrainzSearch from './Search/MusicBrainzSearch';
-import MusicBrainzSearchResult from './MusicBrainzSearchResult';
+import MusicBrainzSearchResult from './SearchResult/MusicBrainzSearchResult';
 
 const MusicBrainz = ({ visible }) => {
   const [searchResults, setSearchResults] = useState(null);

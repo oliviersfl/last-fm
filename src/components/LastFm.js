@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LastFmApi from '../api/lastfm';
 import LastFmSearch from './Search/LastFmSearch';
-import LastFmSearchResult from './LastFmSearchResult';
+import LastFmSearchResult from './SearchResult/LastFmSearchResult';
 
 const LastFm = ({ visible }) => {
   const [searchResults, setSearchResults] = useState(null);
