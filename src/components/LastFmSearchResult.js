@@ -1,6 +1,6 @@
 const LastFmSearchResult = ( {artists }) => {
     return (
-        <div className="ui segment content">
+        <div className={ "ui segment content" + (!artists && " hidden") }>
             <table className="ui selectable celled table">
                 <thead>
                     <tr>

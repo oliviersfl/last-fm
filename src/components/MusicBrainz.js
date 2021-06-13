@@ -21,7 +21,7 @@ function searchRelease(artistId) {
 
 const MusicBrainz = ({ visible }) => {
     return (
-        <div className={ "ui segment content" + (visible ? "" : " hidden") }>
+        <div className={ "ui segment content" + (!visible && " hidden") }>
           <MusicBrainzSearch onFormSubmit={ searchArtist } onShowRelease={ searchRelease }/>
         </div>
       );
