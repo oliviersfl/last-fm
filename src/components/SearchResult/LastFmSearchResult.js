@@ -31,7 +31,7 @@ const LastFmSearchResult = ( {artists, shortList, setShortList }) => {
                                     <td>{ artist.name }</td>
                                     <td className="center aligned">
                                         <i
-                                            className={ "plus circle icon big pointer green" }
+                                            className={ "plus circle icon big pointer " + (shortList.includes(artist.name) ? " grey" : " green" ) }
                                             title={ "Add " + artist.name + " to shortlist" }
                                             onClick={ () => addToShortList(artist.name) }
                                         ></i>
