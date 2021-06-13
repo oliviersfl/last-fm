@@ -4,8 +4,16 @@ import LastFm from './LastFm';
 import MusicBrainz from './MusicBrainz';
 import Favourites from './Favourites';
 import Content from '../Constants';
+import Session from 'react-session-api'
 
 const App = () => {
+    Session.config(true, 0);
+    
+    // Initialize session to empty array if not set
+    if(Session.get("lastfmFav") == null) {
+        Session.set("lastfmFav", JSON.stringify([]));
+    }
+
     // Initialize state and set default page
     const [currentPage, setCurrentPage] = useState(Content.LastFm);
     return (

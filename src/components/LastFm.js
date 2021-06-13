@@ -1,13 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LastFmApi from '../api/lastfm';
 import LastFmSearch from './Search/LastFmSearch';
 import LastFmSearchResult from './SearchResult/LastFmSearchResult';
-import { Button, Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react';
+import Session from 'react-session-api';
 
 const LastFm = ({ visible }) => {
   const [searchResults, setSearchResults] = useState(null);
   const [shortList, setShortList] = useState([]);
   const [open, setOpen] = React.useState(false)
+  const [favourites, setFavourites] = React.useState([]);
+
+  useEffect(() => {
+    var favArtists = JSON.parse(Session.get("lastfmFav"));
+    setFavourites(favArtists);
+  }, [open]);
+
+  const addToFavourites = (artistName) => {
+
+    var favArtists = JSON.parse(Session.get("lastfmFav"));
+
+    // Add to favourites
+    if(!favArtists.includes(artistName)) {
+      favArtists.push(artistName);
+      Session.set("lastfmFav", JSON.stringify(favArtists));
+    }
+
+    // Remove from favourites (if artist already in session)
+    else {
+      var index = favArtists.indexOf(artistName);
+      favArtists.splice(index, 1);
+      Session.set("lastfmFav", JSON.stringify(favArtists));
+    }
+    
+    setFavourites(favArtists);
+  }
 
   const searchArtist = (term) => {
     LastFmApi.get("", {
@@ -49,7 +76,7 @@ const LastFm = ({ visible }) => {
                       shortList.map(artist => {
                         return (
                           <tr key={ artist }>
-                            <td><i className="star outline icon orange pointer"></i></td>
+                            <td><i className={ "star icon orange pointer" + (favourites.includes(artist) ? "" : " outline") } onClick={ () => addToFavourites(artist) }></i></td>
                             <td className="left aligned">{ artist }</td>
                           </tr>
                         );
