@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MusicBrainzApi from '../../api/musicbrainz';
 import { useCookies } from 'react-cookie';
+import { Loader } from 'semantic-ui-react'
 
 const MusicBrainzRelease = ({ artistId, favourites, setFavourites, visible }) => {
     const [releases, setReleases] = useState(null);
@@ -114,7 +115,11 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites, visible }) =>
         
         });
     }
-
+    if(!releases) {
+        return (
+            <Loader active inline='centered' className="hidden" />
+        )
+    }
     return (
         releases &&
 
