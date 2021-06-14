@@ -18,7 +18,7 @@ const MusicBrainzSearch = ({ onFormSubmit }) => {
                         value={ term }
                         onChange={ e => setTerm(e.target.value) }
                         placeholder="Search for Artist..." />
-                    <i className="search icon"></i>
+                    <i className="search icon circular link" onClick={ submitForm }></i>
                 </div>
             </div>
         </form>
