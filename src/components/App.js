@@ -23,11 +23,11 @@ const App = () => {
             <Menu
                 navigation={ currentPage }
                 setCurrentPage={ setCurrentPage }
-                favouritesCount={ favourites.length }
+                favouritesCount={ favourites !== undefined && favourites.length }
             />
-            <LastFm visible={ currentPage === Content.LastFm } favourites={ favourites } setFavourites={ setFavourites } />
-            <MusicBrainz visible={ currentPage === Content.MusicBrainz } favourites={ favourites } setFavourites={ setFavourites } />
-            <Favourites visible={ currentPage === Content.Favourites } favourites={ favourites } setFavourites={ setFavourites }/>
+            <LastFm visible={ currentPage === Content.LastFm } favourites={ favourites !== undefined && favourites } setFavourites={ setFavourites } />
+            <MusicBrainz visible={ currentPage === Content.MusicBrainz } favourites={ favourites !== undefined && favourites } setFavourites={ setFavourites } />
+            <Favourites visible={ currentPage === Content.Favourites } favourites={ favourites !== undefined && favourites } setFavourites={ setFavourites }/>
         </div>
     );
 }
