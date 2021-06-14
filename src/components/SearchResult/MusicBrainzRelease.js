@@ -8,11 +8,6 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites, visible }) =>
     const [cookies, setCookie] = useCookies(['favArtists']);
 
     useEffect(() => {
-        var favArtists = cookies.favArtists;
-        setFavourites(favArtists);
-    }, [cookies.favArtists, setFavourites]);
-
-    useEffect(() => {
         if(visible) {
             searchRelease(artistId);
         }
