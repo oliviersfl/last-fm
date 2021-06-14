@@ -78,7 +78,8 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites, visible }) =>
             }
             // if release not found, add to favourites to existing artist
             if(!releaseFound) {
-                var release = {
+                label = (releaseObj["label-info"] && releaseObj["label-info"].length > 0 && releaseObj["label-info"][0].label && releaseObj["label-info"][0].label.name) ? releaseObj["label-info"][0].label.name : "";
+                release = {
                     id: releaseObj.id,
                     year: releaseObj.date && new Date(releaseObj.date).getFullYear(),
                     title: releaseObj.title,
