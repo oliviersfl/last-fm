@@ -1,23 +1,32 @@
-function Favourites({ visible, favourites, setFavourites }) {
-    console.log(favourites);
+import LastFmFavourite from "./Favourites/LastFmFavourite";
+import MusicBrainzFavourite from "./Favourites/MusicBrainzFavourite";
+import { Table } from 'semantic-ui-react'
+
+const Favourites = ({ visible, favourites, setFavourites }) => {
     return (
         <div className={ "ui segment content" + (!visible && " hidden") }>
             <h1>Favourites</h1>
             <p>Count: { favourites.length }</p>
 
-            {
-                favourites.map(favourite => {
-                    return typeof(favourite) === "string" ?
-                    <p>{ favourite }</p>
-                    :
-                    <div>
-                        <h2>{ favourite.name }</h2>
-                        { favourite.releases.map(release => {
-                            return <p><i>{ release.title }</i></p>
-                        }) }
-                    </div>
-                })
-            }
+            <Table celled>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell width='1'></Table.HeaderCell>
+                        <Table.HeaderCell width='12'>Artist Name</Table.HeaderCell>
+                        <Table.HeaderCell width='3'></Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                {
+                    favourites.map(favourite => {
+                        return typeof(favourite) === "string" ?
+                        <LastFmFavourite favouriteArtist={ favourite } favourites={ favourites } setFavourites={ setFavourites }/>
+                        :
+                        <MusicBrainzFavourite favouriteRelease={ favourite } favourites={ favourites } setFavourites={ setFavourites } />
+                    })
+                }
+                </Table.Body>
+            </Table>
         </div>
     )
 }
