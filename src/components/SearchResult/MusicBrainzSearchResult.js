@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MusicBrainzRelease from "./MusicBrainzRelease";
 
-const MusicBrainzSearchResult = ({ artists }) => {
+const MusicBrainzSearchResult = ({ artists, favourites, setFavourites }) => {
     const [activeArtistRelease, setActiveArtistRelease] = useState(null);
 
     return (
@@ -26,7 +26,12 @@ const MusicBrainzSearchResult = ({ artists }) => {
                                     </tr>
                                     <tr className={ artist.id === activeArtistRelease ? "" : "hidden"}>
                                         <td colSpan="2">
-                                            <MusicBrainzRelease artistId={ artist.id } visible="false" />
+                                            <MusicBrainzRelease
+                                                artistId={ artist.id }
+                                                visible="false"
+                                                favourites={ favourites }
+                                                setFavourites={ setFavourites }
+                                            />
                                         </td>
                                     </tr>
                                 </React.Fragment>

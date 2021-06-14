@@ -3,7 +3,7 @@ import MusicBrainzApi from '../api/musicbrainz';
 import MusicBrainzSearch from './Search/MusicBrainzSearch';
 import MusicBrainzSearchResult from './SearchResult/MusicBrainzSearchResult';
 
-const MusicBrainz = ({ visible }) => {
+const MusicBrainz = ({ visible, favourites, setFavourites }) => {
   const [searchResults, setSearchResults] = useState(null);
 
   const searchArtist = (term) => {
@@ -23,6 +23,8 @@ const MusicBrainz = ({ visible }) => {
       <MusicBrainzSearch onFormSubmit={ searchArtist }/>
       <MusicBrainzSearchResult
         artists={ (searchResults != null && searchResults.artists) && searchResults.artists }
+        favourites={ favourites }
+        setFavourites={ setFavourites }
       />
     </div>
   );

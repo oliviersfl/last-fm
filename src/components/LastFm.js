@@ -5,16 +5,15 @@ import LastFmSearchResult from './SearchResult/LastFmSearchResult';
 import { Button, Modal } from 'semantic-ui-react';
 import Session from 'react-session-api';
 
-const LastFm = ({ visible }) => {
+const LastFm = ({ visible, favourites, setFavourites }) => {
   const [searchResults, setSearchResults] = useState(null);
   const [shortList, setShortList] = useState([]);
-  const [open, setOpen] = React.useState(false)
-  const [favourites, setFavourites] = React.useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     var favArtists = JSON.parse(Session.get("favArtists"));
     setFavourites(favArtists);
-  }, [open]);
+  }, [setFavourites, open]);
 
   const updateFavourites = (artistName) => {
 

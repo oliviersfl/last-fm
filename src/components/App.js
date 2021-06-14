@@ -16,15 +16,17 @@ const App = () => {
 
     // Initialize state and set default page
     const [currentPage, setCurrentPage] = useState(Content.LastFm);
+    const [favourites, setFavourites] = useState([]);
+
     return (
         <div className="ui container">
             <Menu
                 navigation={ currentPage }
                 setCurrentPage={ setCurrentPage }
             />
-            <LastFm visible={ currentPage === Content.LastFm } />
-            <MusicBrainz visible={ currentPage === Content.MusicBrainz } />
-            <Favourites visible={ currentPage === Content.Favourites } />
+            <LastFm visible={ currentPage === Content.LastFm } favourites={ favourites } setFavourites={ setFavourites } />
+            <MusicBrainz visible={ currentPage === Content.MusicBrainz } favourites={ favourites } setFavourites={ setFavourites } />
+            <Favourites visible={ currentPage === Content.Favourites } favourites={ favourites } setFavourites={ setFavourites }/>
         </div>
     );
 }

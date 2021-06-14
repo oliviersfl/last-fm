@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import MusicBrainzApi from '../../api/musicbrainz';
 import Session from 'react-session-api';
 
-const MusicBrainzRelease = ({ artistId }) => {
+const MusicBrainzRelease = ({ artistId, favourites, setFavourites }) => {
     const [releases, setReleases] = useState(null);
-    const [favourites, setFavourites] = React.useState([]);
 
     useEffect(() => {
         searchRelease(artistId);
