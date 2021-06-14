@@ -9,7 +9,8 @@ const MusicBrainz = ({ visible, favourites, setFavourites }) => {
   const searchArtist = (term) => {
     MusicBrainzApi.get("/artist", {
       params: {
-        query: term
+        query: term,
+        limit: "10"
       }
     }).then((response) => {
       setSearchResults(response.data);
