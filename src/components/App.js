@@ -16,7 +16,7 @@ const App = () => {
 
     // Initialize state and set default page
     const [currentPage, setCurrentPage] = useState(Content.LastFm);
-    const [favourites, setFavourites] = useState([]);
+    const [favourites, setFavourites] = useState(cookies.favArtists);
 
     return (
         <div className="ui container">
