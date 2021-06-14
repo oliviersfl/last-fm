@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MusicBrainzApi from '../../api/musicbrainz';
 import { useCookies } from 'react-cookie';
 
-const MusicBrainzRelease = ({ artistId, favourites, setFavourites }) => {
+const MusicBrainzRelease = ({ artistId, favourites, setFavourites, visible }) => {
     const [releases, setReleases] = useState(null);
     const [cookies, setCookie] = useCookies(['favArtists']);
 
@@ -12,8 +12,10 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites }) => {
     }, [cookies.favArtists, setFavourites]);
 
     useEffect(() => {
-        searchRelease(artistId);
-    }, [artistId]);
+        if(visible) {
+            searchRelease(artistId);
+        }
+    }, [artistId, visible]);
 
     const favouritesHasRelease = (releaseId) => {
         var releaseFound = false;

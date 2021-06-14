@@ -28,7 +28,7 @@ const MusicBrainzSearchResult = ({ artists, favourites, setFavourites }) => {
                                         <td colSpan="2">
                                             <MusicBrainzRelease
                                                 artistId={ artist.id }
-                                                visible="false"
+                                                visible={ artist.id === activeArtistRelease }
                                                 favourites={ favourites }
                                                 setFavourites={ setFavourites }
                                             />
