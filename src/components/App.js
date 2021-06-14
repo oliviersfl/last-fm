@@ -4,14 +4,14 @@ import LastFm from './LastFm';
 import MusicBrainz from './MusicBrainz';
 import Favourites from './Favourites';
 import Content from '../Constants';
-import Session from 'react-session-api'
+import { useCookies } from 'react-cookie';
 
 const App = () => {
-    Session.config(true, 0);
+    const [cookies, setCookie] = useCookies(['favArtists']);
     
     // Initialize session to empty array if not set
-    if(Session.get("favArtists") == null) {
-        Session.set("favArtists", JSON.stringify([]));
+    if(cookies.favArtists == null) {
+        setCookie('favArtists', JSON.stringify([]));
     }
 
     // Initialize state and set default page

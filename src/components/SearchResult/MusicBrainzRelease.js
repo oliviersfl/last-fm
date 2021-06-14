@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import MusicBrainzApi from '../../api/musicbrainz';
-import Session from 'react-session-api';
+import { useCookies } from 'react-cookie';
 
 const MusicBrainzRelease = ({ artistId, favourites, setFavourites }) => {
     const [releases, setReleases] = useState(null);
+    const [cookies, setCookie] = useCookies(['favArtists']);
 
     useEffect(() => {
         searchRelease(artistId);
-        var favArtists = JSON.parse(Session.get("favArtists"));
+        var favArtists = cookies.favArtists;
         setFavourites(favArtists);
     }, [artistId]);
 
@@ -27,8 +28,8 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites }) => {
     }
 
     const updateFavourites = (releaseObj) => {
-
-        var favArtists = JSON.parse(Session.get("favArtists"));
+        var date = new Date(Date.now());
+        var favArtists = cookies.favArtists;
 
         // if artist not found create new artist with release
         if(favArtists.findIndex(x => x.id === artistId) === -1) {
@@ -50,7 +51,7 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites }) => {
             }
 
             favArtists.push(artist);
-            Session.set("favArtists", JSON.stringify(favArtists));
+            setCookie('favArtists', JSON.stringify(favArtists), { expires: new Date(date.getFullYear() + 1, date.getMonth(), date.getDate()) });
         }
 
         // if artist found
@@ -80,7 +81,7 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites }) => {
                 }
                 var index = favArtists.findIndex(x => x.id === artistId);
                 favArtists[index].releases.push(release);
-                Session.set("favArtists", JSON.stringify(favArtists));
+                setCookie('favArtists', JSON.stringify(favArtists), { expires: new Date(date.getFullYear() + 1, date.getMonth(), date.getDate()) });
             }
 
             // if release found, remove from favourites
@@ -90,7 +91,7 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites }) => {
                 if(favArtists[a].releases.length === 0) {
                     favArtists.splice(a, 1);
                 }
-                Session.set("favArtists", JSON.stringify(favArtists));
+                setCookie('favArtists', JSON.stringify(favArtists), { expires: new Date(date.getFullYear() + 1, date.getMonth(), date.getDate()) });
             }
         }
 

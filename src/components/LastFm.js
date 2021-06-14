@@ -3,33 +3,34 @@ import LastFmApi from '../api/lastfm';
 import LastFmSearch from './Search/LastFmSearch';
 import LastFmSearchResult from './SearchResult/LastFmSearchResult';
 import { Button, Modal } from 'semantic-ui-react';
-import Session from 'react-session-api';
+import { useCookies } from 'react-cookie';
 
 const LastFm = ({ visible, favourites, setFavourites }) => {
   const [searchResults, setSearchResults] = useState(null);
   const [shortList, setShortList] = useState([]);
   const [open, setOpen] = useState(false);
+  const [cookies, setCookie] = useCookies(['favArtists']);
 
   useEffect(() => {
-    var favArtists = JSON.parse(Session.get("favArtists"));
+    var favArtists = cookies.favArtists;
     setFavourites(favArtists);
-  }, [setFavourites, open]);
+  }, [cookies.favArtists, setFavourites, open]);
 
   const updateFavourites = (artistName) => {
-
-    var favArtists = JSON.parse(Session.get("favArtists"));
+    var date = new Date(Date.now());
+    var favArtists = cookies.favArtists;
 
     // Add to favourites
     if(!favArtists.includes(artistName)) {
       favArtists.push(artistName);
-      Session.set("favArtists", JSON.stringify(favArtists));
+      setCookie('favArtists', JSON.stringify(favArtists), { expires: new Date(date.getFullYear() + 1, date.getMonth(), date.getDate()) });
     }
 
     // Remove from favourites (if artist already in session)
     else {
       var index = favArtists.indexOf(artistName);
       favArtists.splice(index, 1);
-      Session.set("favArtists", JSON.stringify(favArtists));
+      setCookie('favArtists', JSON.stringify(favArtists), { expires: new Date(date.getFullYear() + 1, date.getMonth(), date.getDate()) });
     }
     
     setFavourites(favArtists);
