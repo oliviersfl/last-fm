@@ -23,6 +23,7 @@ const App = () => {
             <Menu
                 navigation={ currentPage }
                 setCurrentPage={ setCurrentPage }
+                favouritesCount={ favourites.length }
             />
             <LastFm visible={ currentPage === Content.LastFm } favourites={ favourites } setFavourites={ setFavourites } />
             <MusicBrainz visible={ currentPage === Content.MusicBrainz } favourites={ favourites } setFavourites={ setFavourites } />

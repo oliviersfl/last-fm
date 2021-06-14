@@ -1,6 +1,6 @@
 import Content from '../Constants';
 
-function Menu({ navigation, setCurrentPage }) {
+function Menu({ navigation, setCurrentPage, favouritesCount }) {
     return (
         <div className="app">
             <div className="ui secondary pointing menu">
@@ -21,7 +21,7 @@ function Menu({ navigation, setCurrentPage }) {
                     onClick={ () => setCurrentPage(Content.Favourites) }
 
                 >
-                    ⭐ Favourites
+                    ⭐ Favourites { favouritesCount > 0 ? "(" + favouritesCount + ") " : "" }
                 </a>
             </div>
         </div>
