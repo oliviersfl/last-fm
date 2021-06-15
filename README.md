@@ -8,3 +8,9 @@ If you have Node.js installed, do the following steps:
 3. To run the application, type in `npm start`
 
 The application will start in your main browser automatically
+
+### Key Frameworks used:
+- React (17.0.2)
+- Semantic UI
+- react-cookie
+- axios
