@@ -14,7 +14,7 @@ const Favourites = ({ visible, favourites, setFavourites }) => {
                 <p>You haven't added any favourites yet. Please search for your favourite artist and releases to add to this list.</p>
             </Message>
 
-            <Table celled className={ favourites.length === 0 ? "hidden" : "" }>
+            <Table className={ favourites.length === 0 ? "hidden" : "" }>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell width='1'></Table.HeaderCell>

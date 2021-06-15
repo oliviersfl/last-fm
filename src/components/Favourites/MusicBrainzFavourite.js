@@ -73,7 +73,7 @@ const MusicBrainzFavourite = ({ favouriteRelease, favourites, setFavourites, act
                 (
                     <Table.Row>
                         <Table.Cell colSpan="3">
-                            <Table>
+                            <Table celled>
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell></Table.HeaderCell>
