@@ -52,7 +52,7 @@ const MusicBrainzFavourite = ({ favouriteRelease, favourites, setFavourites, act
                     <Icon
                         color='red'
                         name='minus circle'
-                        className='pointer'
+                        className='link'
                         size='large'
                         onClick={ () => removeArtist() }
                         title={ "Remove " + favouriteRelease.name + " from favourites" }
@@ -92,7 +92,7 @@ const MusicBrainzFavourite = ({ favouriteRelease, favourites, setFavourites, act
                                                     <Icon
                                                         color='red'
                                                         name='minus circle'
-                                                        className='pointer'
+                                                        className='link'
                                                         size='large'
                                                         onClick={ () => removeRelease(release.id) }
                                                         title={ "Remove " + release.title + " from favourites" }

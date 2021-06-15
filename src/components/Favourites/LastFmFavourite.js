@@ -24,7 +24,7 @@ const LastFmFavourite = ( { favouriteArtist, favourites, setFavourites }) => {
                 <Icon
                     color='red'
                     name='minus circle'
-                    className='pointer'
+                    className='link'
                     size='large'
                     onClick={ () => removeLastFmFavourite() }
                     title={ "Remove " + favouriteArtist + " from favourites" }
