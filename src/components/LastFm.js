@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LastFmApi from '../api/lastfm';
 import LastFmSearch from './Search/LastFmSearch';
 import LastFmSearchResult from './SearchResult/LastFmSearchResult';
-import { Button, Modal } from 'semantic-ui-react';
+import { Button, Modal, Message } from 'semantic-ui-react';
 import { useCookies } from 'react-cookie';
 
 const LastFm = ({ visible, favourites, setFavourites }) => {
@@ -58,7 +58,12 @@ const LastFm = ({ visible, favourites, setFavourites }) => {
             >
               <Modal.Header>Your Shortlist</Modal.Header>
               <Modal.Content>
-                <table className="ui very basic table">
+                <Message className={ shortList.length === 0 ? "" : "hidden" }>
+                  <Message.Header>No shortlist added</Message.Header>
+                  <p>You haven't added any artists to the shortlist. Pick some from the search results.</p>
+                </Message>
+
+                <table className={ "ui very basic table" + (shortList.length === 0 ? " hidden" : "") }>
                   <thead>
                     <tr>
                       <th className="one wide"></th>
