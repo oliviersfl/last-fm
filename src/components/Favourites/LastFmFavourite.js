@@ -20,7 +20,16 @@ const LastFmFavourite = ( { favouriteArtist, favourites, setFavourites }) => {
 
     return(
         <Table.Row key={ favouriteArtist }>
-            <Table.Cell textAlign='center'><Icon color='red' name='minus circle' className='pointer' size='large' onClick={ () => removeLastFmFavourite() } /></Table.Cell>
+            <Table.Cell textAlign='center'>
+                <Icon
+                    color='red'
+                    name='minus circle'
+                    className='pointer'
+                    size='large'
+                    onClick={ () => removeLastFmFavourite() }
+                    title={ "Remove " + favouriteArtist + " from favourites" }
+                />
+            </Table.Cell>
             <Table.Cell>{ favouriteArtist }</Table.Cell>
             <Table.Cell textAlign='center'></Table.Cell>
         </Table.Row>

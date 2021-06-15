@@ -48,7 +48,16 @@ const MusicBrainzFavourite = ({ favouriteRelease, favourites, setFavourites, act
     return (
         <React.Fragment key={ favouriteRelease.id }>
             <Table.Row>
-                <Table.Cell textAlign='center'><Icon color='red' name='minus circle' className='pointer' size='large' onClick={ () => removeArtist() } /></Table.Cell>
+                <Table.Cell textAlign='center'>
+                    <Icon
+                        color='red'
+                        name='minus circle'
+                        className='pointer'
+                        size='large'
+                        onClick={ () => removeArtist() }
+                        title={ "Remove " + favouriteRelease.name + " from favourites" }
+                    />
+                </Table.Cell>
                 <Table.Cell>{ favouriteRelease.name }</Table.Cell>
                 <Table.Cell textAlign='center'><Button basic color='green' content={ (favouriteRelease.id === activeArtistRelease ? 'Hide' : 'Show') + ' Releases' } onClick={ () => setActiveArtistRelease(favouriteRelease.id === activeArtistRelease ? null : favouriteRelease.id) } /></Table.Cell>
             </Table.Row>
@@ -69,7 +78,16 @@ const MusicBrainzFavourite = ({ favouriteRelease, favourites, setFavourites, act
                             favouriteRelease.releases.map(release => {
                                 return (
                                     <Table.Row key={ release.id }>
-                                        <Table.Cell><Icon color='red' name='minus circle' className='pointer' size='large' onClick={ () => removeRelease(release.id) } /></Table.Cell>
+                                        <Table.Cell>
+                                            <Icon
+                                                color='red'
+                                                name='minus circle'
+                                                className='pointer'
+                                                size='large'
+                                                onClick={ () => removeRelease(release.id) }
+                                                title={ "Remove " + release.title + " from favourites" }
+                                            />
+                                        </Table.Cell>
                                         <Table.Cell>{ release.year }</Table.Cell>
                                         <Table.Cell>{ release.title }</Table.Cell>
                                         <Table.Cell>{ release.label }</Table.Cell>
