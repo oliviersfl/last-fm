@@ -27,7 +27,7 @@ const Favourites = ({ visible, favourites, setFavourites }) => {
                 {
                     favourites.map(favourite => {
                         return typeof(favourite) === "string" ?
-                        <LastFmFavourite key={ favourite.id } favouriteArtist={ favourite } favourites={ favourites } setFavourites={ setFavourites }/>
+                        <LastFmFavourite key={ favourite } favouriteArtist={ favourite } favourites={ favourites } setFavourites={ setFavourites }/>
                         :
                         <MusicBrainzFavourite
                             key={ favourite.id }

@@ -46,7 +46,7 @@ const MusicBrainzFavourite = ({ favouriteRelease, favourites, setFavourites, act
     }
 
     return (
-        <React.Fragment>
+        <React.Fragment key={ favouriteRelease.id }>
             <Table.Row>
                 <Table.Cell textAlign='center'><Icon color='red' name='minus circle' className='pointer' size='large' onClick={ () => removeArtist() } /></Table.Cell>
                 <Table.Cell>{ favouriteRelease.name }</Table.Cell>
