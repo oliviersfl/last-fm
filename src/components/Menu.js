@@ -1,9 +1,10 @@
 import Content from '../Constants';
+import { Icon } from 'semantic-ui-react';
 
 function Menu({ navigation, setCurrentPage, favouritesCount }) {
     return (
         <div className="app">
-            <div className="ui secondary pointing menu">
+            <div className="ui inverted top fixed menu">
                 <a
                     className={ navigation === Content.MusicBrainz ? "active item" : "item" }
                     onClick={ () => setCurrentPage(Content.MusicBrainz)
@@ -21,7 +22,8 @@ function Menu({ navigation, setCurrentPage, favouritesCount }) {
                     onClick={ () => setCurrentPage(Content.Favourites) }
 
                 >
-                    ⭐ Favourites { favouritesCount > 0 ? "(" + favouritesCount + ") " : "" }
+                    <Icon color='yellow' name='star' />
+                    Favourites { favouritesCount > 0 ? "(" + favouritesCount + ") " : "" }
                 </a>
             </div>
         </div>

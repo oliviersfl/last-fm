@@ -20,6 +20,7 @@ const App = () => {
 
     return (
         <div className="ui container">
+            <br /><br />
             <Menu
                 navigation={ currentPage }
                 setCurrentPage={ setCurrentPage }
