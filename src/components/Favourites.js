@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import LastFmFavourite from "./Favourites/LastFmFavourite";
 import MusicBrainzFavourite from "./Favourites/MusicBrainzFavourite";
-import { Table } from 'semantic-ui-react'
-import { Message } from 'semantic-ui-react'
+import { Table, Message } from 'semantic-ui-react';
 
 const Favourites = ({ visible, favourites, setFavourites }) => {
     const [activeArtistRelease, setActiveArtistRelease] = useState(null);
