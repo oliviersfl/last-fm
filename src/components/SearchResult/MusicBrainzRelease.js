@@ -111,13 +111,13 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites, visible }) =>
         
         });
     }
-    if(!releases) {
+    if(!releases && visible) {
         return (
             <Loader active inline='centered' className="hidden" />
         )
     }
     return (
-        releases &&
+        releases && visible &&
 
         <React.Fragment>
             {/* Hide table if no Release available  */}
