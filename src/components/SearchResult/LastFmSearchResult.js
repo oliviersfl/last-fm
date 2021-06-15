@@ -9,7 +9,7 @@ const LastFmSearchResult = ( {artists, shortList, setShortList }) => {
         setShortList(Array.from(shortList));
     }
     return (
-        <div className={ "ui segment content" + (!artists ? " hidden" : "") }>
+        <div className={ "ui segment content" + (!artists || artists.length === 0 ? " hidden" : "") }>
             <table className="ui selectable celled table">
                 <thead>
                     <tr>
