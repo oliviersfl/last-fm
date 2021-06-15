@@ -69,7 +69,7 @@ const MusicBrainzFavourite = ({ favouriteRelease, favourites, setFavourites, act
                 </Table.Cell>
             </Table.Row>
             {
-                favouriteRelease.id === activeArtistRelease ? 
+                favouriteRelease.id === activeArtistRelease && 
                 (
                     <Table.Row>
                         <Table.Cell colSpan="3">
@@ -111,8 +111,6 @@ const MusicBrainzFavourite = ({ favouriteRelease, favourites, setFavourites, act
                         </Table.Cell>
                     </Table.Row>
                 )
-                :
-                ""
             }
             
         </React.Fragment>
