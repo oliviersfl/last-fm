@@ -140,7 +140,7 @@ const MusicBrainzRelease = ({ artistId, favourites, setFavourites, visible }) =>
                             return (
                                 <tr key={ release.id }>
                                     <td>
-                                        <i className={ "star icon orange pointer" + (favouritesHasRelease(release.id) ? "" : " outline") } onClick={ () => updateFavourites(release) }></i>
+                                        <i className={ "star icon orange link" + (favouritesHasRelease(release.id) ? "" : " outline") } onClick={ () => updateFavourites(release) }></i>
                                     </td>
                                     <td>{ release.date && new Date(release.date).getFullYear() }</td>
                                     <td>{ release.title }</td>

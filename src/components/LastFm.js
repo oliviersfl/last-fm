@@ -75,7 +75,7 @@ const LastFm = ({ visible, favourites, setFavourites }) => {
                       shortList.map(artist => {
                         return (
                           <tr key={ artist }>
-                            <td><i className={ "star icon orange pointer" + (favourites.includes(artist) ? "" : " outline") } onClick={ () => updateFavourites(artist) }></i></td>
+                            <td><i className={ "star icon orange link" + (favourites.includes(artist) ? "" : " outline") } onClick={ () => updateFavourites(artist) }></i></td>
                             <td className="left aligned">{ artist }</td>
                           </tr>
                         );
